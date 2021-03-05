@@ -31,6 +31,11 @@ function App() {
           <Route path="/managebadges" render={routerProps => <ManageBadges routerProps={routerProps} />} />
         </div>
       </Switch>
+      <Link to="/createbadge">Create Badge</Link>
+      <Link to="/claimbadge">Claim Badge</Link>
+      <Link to="/assignbadge">Assign Badge</Link>
+      <Link to="/badge profile">Badge Profile</Link>
+      <Link to="/mangebadges">Manages Badges</Link>
     </div>
   );
 }
