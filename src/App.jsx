@@ -34,7 +34,7 @@ function App() {
       <Link to="/createbadge">Create Badge</Link>
       <Link to="/claimbadge">Claim Badge</Link>
       <Link to="/assignbadge">Assign Badge</Link>
-      <Link to="/badge profile">Badge Profile</Link>
+      <Link to="/badgeprofile">Badge Profile</Link>
       <Link to="/managebadges">Manages Badges</Link>
     </div>
   );
