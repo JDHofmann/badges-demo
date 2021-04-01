@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import "./App.css";
-import { Switch, Route, Link, withRouter, useLocation } from "react-router-dom";
+import { Switch, Route, Link, useLocation } from "react-router-dom";
 // import Mint from "./components/Mint";
 // import ViewBadge from "./components/ViewBadge";
 import CreateBadge from "./pages/CreateBadge/CreateBadge";
@@ -16,6 +16,11 @@ import Pinata from "./pages/Pinata";
 
 function App() {
   const location = useLocation();
+
+  const style = {
+    padding: "20px",
+  };
+
   return (
     <div className="App">
       { location.pathname === "/claimbadge" ? null : location.pathname === "/badgeprofile" ? <Navbar /> : <Header />}
@@ -31,11 +36,11 @@ function App() {
           <Route path="/managebadges" render={routerProps => <ManageBadges routerProps={routerProps} />} />
         </div>
       </Switch>
-      <Link to="/createbadge">Create Badge</Link>
-      <Link to="/claimbadge">Claim Badge</Link>
-      <Link to="/assignbadge">Assign Badge</Link>
-      <Link to="/badgeprofile">Badge Profile</Link>
-      <Link to="/managebadges">Manages Badges</Link>
+      <Link style={style} to="/createbadge">Create Badge</Link>
+      <Link style={style} to="/claimbadge">Claim Badge</Link>
+      <Link style={style} to="/assignbadge">Assign Badge</Link>
+      <Link style={style} to="/badgeprofile">Badge Profile</Link>
+      <Link style={style} to="/managebadges">Manages Badges</Link>
     </div>
   );
 }

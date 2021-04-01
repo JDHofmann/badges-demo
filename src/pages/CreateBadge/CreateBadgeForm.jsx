@@ -66,7 +66,7 @@ export default function CreateBadgeForm() {
     // await addIpfsUriToContract(ipfsHash);
   }
   const handleSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
+    // alert(JSON.stringify(values, null, 2));
   };
 
   const formik = useFormik({

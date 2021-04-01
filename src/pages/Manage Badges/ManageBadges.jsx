@@ -5,12 +5,13 @@ import styled from "styled-components";
 import Heading from "../../components/Typography/Heading";
 import ManageBadgesForm from "./ManageBadgesForm";
 import { mq, theme } from "../../constants/theme";
-import { ReactComponent as Badge } from "../../components/Icon/grey circle.svg";
+// import { ReactComponent as Badge } from "../../components/Icon/grey circle.svg";
 import BaseButton from "../../components/Button/BaseButton";
 import BadgeDetailsModal from "./BadgeDetailsModal";
 import CreateFormModal from "./CreateFormModal";
 import AssignBadgeModal from "./AssignBadgeModal";
 import CongratulationsModal from "./CongratulationsModal";
+import { BadgesArray } from "../../components/Badges";
 const { white, darkerGray, royalBlue } = theme.colors;
 const { display } = theme.typography.font.family;
 const CreateBadgeContainer = styled.div`
@@ -97,11 +98,18 @@ const FormContainer = styled.div`
 		top: 0px;
 		font-weight: 500;
 	}
+  .badge-thumbnail {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+  }
 `;
 
-const StyledCircle = styled(Badge)`
-margin: 0;
-`;
+// const StyledCircle = styled(Badge)`
+// margin: 0;
+// `;
 const StyledBadge = styled.div`
 width: min-content;
 padding: 20px;
@@ -116,12 +124,21 @@ function ManageBadges() {
   const [createMoreModal, setCreateMoreModal] = useState(false);
   const [isCongratulationsModalShowing, setCongratulationsModal] = useState(false);
   const [assignBadgeModal, setAssignBadgeModal] = useState(false);
+
+  const renderTags = (tags) => {
+    return tags.map(tag => <span key="tag-id">{tag}</span>);
+  };
+
   const renderBadges = () => {
-    const badges = [];
-    for (let i = 0; i < 20; i++) {
-      badges.push(Badge);
-    }
-    return badges.map(badge => <StyledBadge key="badge.id" ><StyledCircle onClick={() => setBadgeDetailsModal(true)}/><span>[Name]</span><span>[Tags]</span></StyledBadge>);
+    // const badges = [];
+    // for (let i = 0; i < 20; i++) {
+    //   badges.push(Badge);
+    // }
+    return BadgesArray.map(badge => (<StyledBadge key="badge.id" >
+      <img className="badge-thumbnail" src={"process.env.PUBLIC_URL/" + badge.src} onClick={() => setBadgeDetailsModal(true)}/>
+      <span>{badge.name}</span>
+      <p>{renderTags(badge.tags)}</p>
+    </StyledBadge>));
   };
 
   return (
@@ -182,6 +199,7 @@ function ManageBadges() {
             buttonPrimary="Assign Badge"
             buttonSecondary="Cancel"
             modalBodyText="true"
+            title="Congratulations You created xx new badges!"
           />
           <AssignBadgeModal
             assignBadgeModal={assignBadgeModal}

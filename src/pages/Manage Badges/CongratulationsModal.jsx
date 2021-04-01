@@ -68,7 +68,7 @@ export default function CongratulationsModal(props) {
       centered
       title={
         <Heading>
-          <h4>Congratulations You created xx new badges!</h4>
+          <h4>{props.title}</h4>
         </Heading>
       }>
       {props.modalBodyText === "true"
