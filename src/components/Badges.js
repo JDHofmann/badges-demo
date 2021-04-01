@@ -6,13 +6,13 @@ export const BadgesArray = [
     description: "Wow you're a rockstar. You must be Poseidon's son!",
     tags: ["ocean", "legend", "surf"],
     quantity: 200,
-    src: "images/badge-1.png",
+    src: "/images/badge-1.png",
   },
   {
     name: "Rider",
     description: "You've taken charge of the ocean. You are the RIDER.",
     tags: ["rider", "surf"],
     quantity: 100,
-    src: "images/badge-2.png",
+    src: "/images/badge-2.png",
   },
 ];

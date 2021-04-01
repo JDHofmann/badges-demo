@@ -135,7 +135,7 @@ function ManageBadges() {
     //   badges.push(Badge);
     // }
     return BadgesArray.map(badge => (<StyledBadge key="badge.id" >
-      <img className="badge-thumbnail" src={"process.env.PUBLIC_URL/" + badge.src} onClick={() => setBadgeDetailsModal(true)}/>
+      <img className="badge-thumbnail" src={badge.src} onClick={() => setBadgeDetailsModal(true)}/>
       <span>{badge.name}</span>
       <p>{renderTags(badge.tags)}</p>
     </StyledBadge>));
