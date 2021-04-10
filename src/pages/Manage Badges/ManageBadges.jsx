@@ -5,7 +5,6 @@ import styled from "styled-components";
 import Heading from "../../components/Typography/Heading";
 import ManageBadgesForm from "./ManageBadgesForm";
 import { mq, theme } from "../../constants/theme";
-// import { ReactComponent as Badge } from "../../components/Icon/grey circle.svg";
 import BaseButton from "../../components/Button/BaseButton";
 import BadgeDetailsModal from "./BadgeDetailsModal";
 import CreateFormModal from "./CreateFormModal";
@@ -14,6 +13,7 @@ import CongratulationsModal from "./CongratulationsModal";
 import { BadgesArray } from "../../components/Badges";
 const { white, darkerGray, royalBlue } = theme.colors;
 const { display } = theme.typography.font.family;
+
 const CreateBadgeContainer = styled.div`
 	width: 95%;
 	max-width: 800px;
@@ -53,8 +53,9 @@ const FormContainer = styled.div`
 	position: relative;
 	margin-bottom: 104px;
 	border: 1px solid #c4c4c4;
+
 	#create-badge-form {
-		align-content: center;
+		align-content: top;
 		justify-content: center;
 		margin: 3vh 2.5vw;
 		margin-bottom: 0.25vh;
@@ -105,11 +106,13 @@ const FormContainer = styled.div`
     object-fit: cover;
     object-position: center;
   }
+  .badge-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
 `;
 
-// const StyledCircle = styled(Badge)`
-// margin: 0;
-// `;
 const StyledBadge = styled.div`
 width: min-content;
 padding: 20px;
@@ -127,7 +130,7 @@ function ManageBadges() {
   const [currentBadge, setCurrentBadge] = useState({});
 
   const renderTags = (tags) => {
-    return tags.length > 0
+    return tags
       ? tags.map(tag => <span key="tag-id"> {tag} </span>)
       : null;
   };
@@ -144,17 +147,9 @@ function ManageBadges() {
       : null;
   };
 
-  // const openDetailModal = (badge) => {
-  //   console.log(badge);
-  //   return (
-
-  //   );
-  // };
-
   const clickHandler = (badge) => {
     setCurrentBadge(badge);
     setBadgeDetailsModal(true);
-    // openDetailModal(badge);
   };
 
   return (
@@ -163,7 +158,7 @@ function ManageBadges() {
         <Heading>Manage Badges</Heading>
         <FormContainer>
           <ManageBadgesForm />
-          {renderBadges()}
+          <div className="badge-container">{renderBadges()}</div>
           <BadgeDetailsModal
             isShowing={badgeDetailsModal}
             hide={() => setBadgeDetailsModal(false)}

@@ -10,6 +10,7 @@ const StyledModal = styled(AntModal)`
 width: 90vw;
 max-width: 500px;
 padding: 30px;
+
 &&& .btn-primary {
     font-family: ${typography.font.family.display.poppins};
     border-radius: 46px;
