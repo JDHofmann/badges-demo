@@ -80,7 +80,7 @@ export default function CongratulationsModal(props) {
             <span className="remaining">
               You now have xxx/{props.quantity} badges remaining.
             </span>
-            <span className="image-holder"></span>
+            <img className="image-holder" src={props.currentBadge.src}/>
             <BaseButton className="btn-primary" type="primary" key="submit">
               {props.buttonPrimary}
             </BaseButton>

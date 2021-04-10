@@ -58,6 +58,13 @@ max-width: 564px;
 &&& .ant-modal-header {
   border-radius: 10px 10px 0 0;
 }
+.badge-image {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 15px auto;
+  border-radius: 50%;
+}
 `;
 const modalBodyText = <span style={{ textAlign: "center" }}>You now have xxx/xxx badges remaining</span>;
 export default class CreateFormModal extends React.Component {
@@ -114,9 +121,10 @@ export default class CreateFormModal extends React.Component {
         {this.props.modalBodyText === "true"
           ? (
             <div className="modal-form-body">
-              <span className="row-item">Name: {this.props.name}</span>
-              <span className="row-item">Description: {this.props.description}</span>
-              <span className="row-item">Tags: {this.props.tags}</span>
+              <img className="badge-image" src={this.props.currentBadge.src} />
+              <span className="row-item">Name: {this.props.currentBadge.name}</span>
+              <span className="row-item">Description: {this.props.currentBadge.description}</span>
+              <span className="row-item">Tags: {this.props.currentBadge.tags}</span>
               <span className="row-item">Remaining Quantity: xxx/{this.props.quantity}</span>
               <Form>
                 <Form.Item>

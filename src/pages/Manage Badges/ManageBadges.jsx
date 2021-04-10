@@ -124,70 +124,37 @@ function ManageBadges() {
   const [createMoreModal, setCreateMoreModal] = useState(false);
   const [isCongratulationsModalShowing, setCongratulationsModal] = useState(false);
   const [assignBadgeModal, setAssignBadgeModal] = useState(false);
+  const [currentBadge, setCurrentBadge] = useState({});
 
   const renderTags = (tags) => {
-    return tags.map(tag => <span key="tag-id">{tag}</span>);
+    return tags.length > 0
+      ? tags.map(tag => <span key="tag-id"> {tag} </span>)
+      : null;
   };
 
   const renderBadges = () => {
-    // const badges = [];
-    // for (let i = 0; i < 20; i++) {
-    //   badges.push(Badge);
-    // }
-    return BadgesArray.map(badge => (
-      <>
+    return BadgesArray.length > 0
+      ? BadgesArray.map(badge => (
         <StyledBadge key="badge.id" >
           <img className="badge-thumbnail" src={badge.src} onClick={() => clickHandler(badge)} />
           <span>{badge.name}</span>
           <p>{renderTags(badge.tags)}</p>
         </StyledBadge>
-      </>
-    ));
+      ))
+      : null;
   };
 
-  const openDetailModal = (badge) => {
-    console.log(badge);
-    return (
-      <BadgeDetailsModal
-        isShowing={badgeDetailsModal}
-        hide={() => setBadgeDetailsModal(false)}
-        title="Badge Details"
-        keyboard={true}
-        secondaryButtonStyle="true"
-        modalBodyText={
-          <div className="modal-form-body">
-            <img className="badge-modal-thumbnail" src={badge.src} />
-            <span>Name: {badge.name}</span>
-            <span>Description: {badge.description}</span>
-            <span>Tags: {renderTags(badge.tags)}</span>
-            <span>Remaining Quantity: xxx/</span>
-          </div>}
-        footer={
-          <div className="btn-container">
-            <BaseButton
-              className="btn-secondary" key="back"
-              onClick={() => {
-                setBadgeDetailsModal(false);
-                setAssignBadgeModal(true);
-              }}>
-                Assign Badge
-            </BaseButton>
-            <BaseButton
-              className="btn-primary"
-              type="primary"
-              key="submit"
-              onClick={() => { setBadgeDetailsModal(false); setCreateMoreModal(true); }}>
-                Create More
-            </BaseButton>
-          </div>
-        }>
-      </BadgeDetailsModal>
-    );
-  };
+  // const openDetailModal = (badge) => {
+  //   console.log(badge);
+  //   return (
+
+  //   );
+  // };
 
   const clickHandler = (badge) => {
+    setCurrentBadge(badge);
     setBadgeDetailsModal(true);
-    openDetailModal(badge);
+    // openDetailModal(badge);
   };
 
   return (
@@ -197,6 +164,40 @@ function ManageBadges() {
         <FormContainer>
           <ManageBadgesForm />
           {renderBadges()}
+          <BadgeDetailsModal
+            isShowing={badgeDetailsModal}
+            hide={() => setBadgeDetailsModal(false)}
+            title="Badge Details"
+            keyboard={true}
+            secondaryButtonStyle="true"
+            modalBodyText={
+              <div className="modal-form-body">
+                <img className="badge-modal-thumbnail" src={currentBadge.src} />
+                <span>Name: {currentBadge.name}</span>
+                <span>Description: {currentBadge.description}</span>
+                <span>Tags: {renderTags(currentBadge.tags)}</span>
+                <span>Remaining Quantity: xxx/</span>
+              </div>}
+            footer={
+              <div className="btn-container">
+                <BaseButton
+                  className="btn-secondary" key="back"
+                  onClick={() => {
+                    setBadgeDetailsModal(false);
+                    setAssignBadgeModal(true);
+                  }}>
+                Assign Badge
+                </BaseButton>
+                <BaseButton
+                  className="btn-primary"
+                  type="primary"
+                  key="submit"
+                  onClick={() => { setBadgeDetailsModal(false); setCreateMoreModal(true); }}>
+                Create More
+                </BaseButton>
+              </div>
+            }>
+          </BadgeDetailsModal>
           <CreateFormModal
             isCreateMoreModal={createMoreModal}
             hide={() => setCreateMoreModal(false)}
@@ -208,7 +209,8 @@ function ManageBadges() {
             name="name"
             description="description"
             tags="tags"
-            quantity="quantity" />
+            quantity="quantity"
+            currentBadge={currentBadge}/>
           <CongratulationsModal
             isCongratulationsModalShowing={isCongratulationsModalShowing}
             hide={() => setCongratulationsModal(false)}
@@ -216,6 +218,7 @@ function ManageBadges() {
             buttonSecondary="Cancel"
             modalBodyText="true"
             title="Congratulations You created xx new badges!"
+            currentBadge={currentBadge}
           />
           <AssignBadgeModal
             assignBadgeModal={assignBadgeModal}
