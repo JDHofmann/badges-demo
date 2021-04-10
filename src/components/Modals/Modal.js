@@ -140,9 +140,11 @@ const Modal = ({
           {secondarybuttonlink
             ? (
               <div className="btn-container">
-                <Link to={link}> <BaseButton className="btn-tertiary" key="back" onClick={hide}>
-                  {buttonSecondary}
-                </BaseButton> </Link>
+                <Link to={secondarybuttonlink}>
+                  <BaseButton className="btn-tertiary" key="back" onClick={hide}>
+                    {buttonSecondary}
+                  </BaseButton>
+                </Link>
                 <BaseButton
                   className="btn-primary"
                   type="primary"
@@ -159,8 +161,8 @@ const Modal = ({
               <div className="btn-container">
                 <BaseButton className="btn-tertiary" key="back" onClick={hide}>
                   {buttonSecondary}
-                </BaseButton> 
-                <Link to={link}> <BaseButton
+                </BaseButton>
+                <Link to={primarybuttonlink}> <BaseButton
                   className="btn-primary"
                   type="primary"
                   key="submit"
