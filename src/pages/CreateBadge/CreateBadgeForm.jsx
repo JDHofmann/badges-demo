@@ -121,10 +121,12 @@ export default function CreateBadgeForm() {
             <Modal
               isShowing={isShowing}
               hide={toggle}
-              modalWidth={800}
+              modalWidth={564}
               title="Congratulations Your badge has been created!"
               buttonPrimary="Assign Badge"
               buttonSecondary="Close"
+              button="false"
+              primarybuttonlink="/assignbadge"
             />
           </Form.Item>
         </FormikAntdForm>

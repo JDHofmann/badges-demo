@@ -17,7 +17,8 @@ const { TextArea } = Input;
 
 const StyledModal = styled(AntModal)`
   text-align: center;
-  width: 100%;
+  max-width: 90vw;
+  width: 564px;
   .ant-modal-header {
   }
   &&& h4 {
@@ -216,7 +217,8 @@ export default function AssignBadgeModal(props) {
 
   return (
     <StyledModal
-    // eslint-disable-next-line react/prop-types
+      width="564"
+      // eslint-disable-next-line react/prop-types
       visible={props.assignBadgeModal}
       keyboard={true}
       // eslint-disable-next-line react/prop-types
@@ -231,7 +233,7 @@ export default function AssignBadgeModal(props) {
         </Heading>
       }>
       <StyledForm
-        id = "create-badge-form"
+        id="create-badge-form"
         {...formItemLayout}
         layout={formLayout}
         form={form}
@@ -241,9 +243,9 @@ export default function AssignBadgeModal(props) {
         onValuesChange={onFormLayoutChange}
       >
         <Form.Item label="Select a FightPandemics account holder">
-          <SearchInput placeholder="Start typing names of the person you want to award badges to" forminputs={formInputs({ value })}/>
+          <SearchInput placeholder="Start typing names of the person you want to award badges to" forminputs={formInputs({ value })} />
         </Form.Item>
-        <Form.Item label= "Share link with a non-account holder">
+        <Form.Item label="Share link with a non-account holder">
           <span>Username</span>
           <Input placeholder="First and Last Name" forminputs={formInputs(value)} />
         </Form.Item>
@@ -254,7 +256,7 @@ export default function AssignBadgeModal(props) {
             className="generate-link"
             type="primary"
             onClick={toggle}
-            // onSubmit={linkSubmitHandler()}
+          // onSubmit={linkSubmitHandler()}
           >Generate Link</PrimaryFormButton>
           <Modal
             isShowing={isShowing}
@@ -268,7 +270,7 @@ export default function AssignBadgeModal(props) {
         </Form.Item>
         <Form.Item label="">
           <span className="evidence-span">Evidence</span>
-          <TextArea placeholder="Optionally provide evidence for the person who completed the task" forminputs={formInputs({ value })}/>
+          <TextArea placeholder="Optionally provide evidence for the person who completed the task" forminputs={formInputs({ value })} />
         </Form.Item>
         <Form.Item className="buttons-parent-div">
           <BaseButton className="btn-tertiary" key="back" onClick={props.hide}>

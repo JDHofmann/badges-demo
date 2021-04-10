@@ -3,6 +3,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import ReactDOM from "react-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Modal as AntModal, Button } from "antd";
 import { theme } from "../../constants/theme";
@@ -39,6 +40,7 @@ const StyledModal = styled(AntModal)`
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
+    padding-top: 30px;
 	}
 	.ant-typography h4 {
 		text-align: center;
@@ -78,6 +80,8 @@ const Modal = ({
   modalWidth,
   secondaryButtonStyle,
   onOk,
+  primarybuttonlink,
+  secondarybuttonlink,
 }) =>
   isShowing
     ? ReactDOM.createPortal(
@@ -130,6 +134,40 @@ const Modal = ({
                   onOk={ onOk }>
                   {buttonPrimary}
                 </BaseButton>
+              </div>
+            )
+            : null}
+          {secondarybuttonlink
+            ? (
+              <div className="btn-container">
+                <Link to={link}> <BaseButton className="btn-tertiary" key="back" onClick={hide}>
+                  {buttonSecondary}
+                </BaseButton> </Link>
+                <BaseButton
+                  className="btn-primary"
+                  type="primary"
+                  key="submit"
+                  onClick=""
+                  onOk={ onOk }>
+                  {buttonPrimary}
+                </BaseButton>
+              </div>
+            )
+            : null}
+          {primarybuttonlink
+            ? (
+              <div className="btn-container">
+                <BaseButton className="btn-tertiary" key="back" onClick={hide}>
+                  {buttonSecondary}
+                </BaseButton> 
+                <Link to={link}> <BaseButton
+                  className="btn-primary"
+                  type="primary"
+                  key="submit"
+                  onClick=""
+                  onOk={ onOk }>
+                  {buttonPrimary}
+                </BaseButton></Link>
               </div>
             )
             : null}

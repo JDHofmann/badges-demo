@@ -14,7 +14,8 @@ const { colors, typography } = theme;
 
 const StyledModal = styled(AntModal)`
   text-align: center;
-  width: 100%;
+  width: 90vw;
+  max-width: 564px;
   .ant-modal-header {
   }
   &&& h4 {
@@ -56,30 +57,31 @@ const StyledModal = styled(AntModal)`
 
 export default function CongratulationsModal(props) {
   return (
-	  <StyledModal
+    <StyledModal
+      width="564"
       // eslint-disable-next-line react/prop-types
       visible={props.isCongratulationsModalShowing}
       keyboard={true}
       // eslint-disable-next-line react/prop-types
       onCancel={props.hide}
-      okButtonProps={{ type: "primary" }}
-      cancelButtonProps={{ type: "primary" }}
+      okButtonProps={{ type: "primary " }}
+      cancelButtonProps={{ type: "primary " }}
       footer={null}
       centered
       title={
         <Heading>
           <h4>{props.title}</h4>
         </Heading>
-      }>
+      }
+    >
       {props.modalBodyText === "true"
         ? (
           <div className="modal-form-body">
-            <span className="remaining">You now have xxx/{props.quantity} badges remaining.</span>
+            <span className="remaining">
+              You now have xxx/{props.quantity} badges remaining.
+            </span>
             <span className="image-holder"></span>
-            <BaseButton
-              className="btn-primary"
-              type="primary"
-              key="submit">
+            <BaseButton className="btn-primary" type="primary" key="submit">
               {props.buttonPrimary}
             </BaseButton>
           </div>

@@ -131,8 +131,6 @@ export default function AccountHolderForm() {
           hide={toggle}
           modalWidth={800}
           title="Congratulations your badge has been assigned!"
-          buttonPrimary="Copy URL"
-          buttonSecondary="Link"
           // eslint-disable-next-line max-len
           modalBodyText="Your badge has been sent to [recipient name]! They will receieve an email notification for their new badge. You now have xxx badges remaining."
         />

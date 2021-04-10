@@ -169,6 +169,8 @@ export default function AccountHolderForm() {
           buttonPrimary="Copy URL"
           buttonSecondary="Link"
           modalBodyText="The badge link has been successfully generated for [name]. Please copy this link to send to them!"
+          button="false"
+          secondarybuttonlink="/claimbadge"
         />
       </Form.Item>
     </StyledForm>
