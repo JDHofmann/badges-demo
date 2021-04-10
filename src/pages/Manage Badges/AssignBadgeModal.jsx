@@ -285,6 +285,8 @@ export default function AssignBadgeModal(props) {
             buttonPrimary="Copy URL"
             buttonSecondary="Link"
             modalBodyText="Your badge has been sent to [recipient name]! They will receieve an email notification for their new badge. You now have xxx badges remaining."
+            button="false"
+            secondarybuttonlink="/claimbadge"
           />
         </Form.Item>
       </StyledForm>

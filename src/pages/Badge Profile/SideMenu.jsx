@@ -14,9 +14,6 @@ grid-column: 1/2;
   grid-column: 1/3;
 }
 padding: 0 1.5vw;
-border-radius: 8px;
-border: 1px solid ${darkGray};
-box-shadow: 5px;
 li {
   font-family: ${display};
   margin: 35px;

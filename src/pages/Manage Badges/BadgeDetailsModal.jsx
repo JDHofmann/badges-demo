@@ -63,6 +63,13 @@ padding: 30px;
 &&& .ant-modal-header {
   border-radius: 10px 10px 0 0;
 }
+.badge-modal-thumbnail {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 15px auto;
+  display: block;
+}
 `;
 
 const BadgeDetailsModal = ({
